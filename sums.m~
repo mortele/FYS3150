@@ -1,0 +1,14 @@
+%% Clean up
+close all;
+clear all;
+clc;
+
+
+%% Run sums.cpp program for different N
+for i=1:10
+    i
+    
+    argument = sprintf('./sums.app %d', i);
+    system(argument);
+    
+end

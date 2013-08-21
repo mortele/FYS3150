@@ -6,11 +6,12 @@ clc;
 
 %% Run sums.cpp program for different N
 % Relative errors for single / double prec. experiments.
-n      = 8;
+n      = 9; % 10^10 exceeds range of a normal int, such that N overflows.
 single = zeros(n,1);
 double = zeros(n,1);
 
 for i=1:n
+    % Display step in terminal for convenience.
     i
     
     % Run the program.
@@ -26,5 +27,9 @@ end
 
 %% Plot results
 figure(1); hold on;
-plot(1:n, log10(single), 'r-');
-plot(1:n, log10(double), 'b-');
+loglog(1:n, (single), 'r-');
+loglog(1:n, (double), 'b-');
+ylabel('log$_{10}($rel. error$)$', 'interpreter', 'latex', 'FontSize', 14);
+xlabel('log$_{10}(n)$', 'interpreter', 'latex', 'FontSize', 14);
+h = legend('single prec.','double prec.');
+set(h, 'interpreter', 'latex', 'FontSize', 14);
